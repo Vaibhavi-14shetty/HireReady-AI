@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,43 +22,39 @@ export default function LoginPage() {
     }
 
     alert("Login successful!");
+
+    router.push("/dashboard");
   }
 
   return (
     <main
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        flexDirection: "column",
+        width: "300px",
+        margin: "100px auto",
+        gap: "10px",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px",
-          width: "320px",
-        }}
-      >
-        <h1>Login</h1>
+      <h1>Login</h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-        <button onClick={handleLogin}>Login</button>
-      </div>
+      <button onClick={handleLogin}>
+        Login
+      </button>
     </main>
   );
 }
