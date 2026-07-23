@@ -8,6 +8,7 @@ Unlike traditional interview platforms, HireReady AI understands your **resume**
 
 ---
 
+
 ## ✨ Features
 
 ### 👤 User Management
